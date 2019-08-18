@@ -54,7 +54,7 @@ date_data <- tapply(activity_data$steps, activity_data$date, sum)
 hist(date_data[!is.na(date_data)], main = "Histogram of Total Steps per Day (ignoring NAs)", xlab = "Total Steps per Day")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+![](PA1_template_files/figure-html/histogram_ignore_nas-1.png)<!-- -->
 
 ### Calculate and report the mean and median total number of steps taken per day
 
@@ -83,7 +83,7 @@ interval_data <- tapply(ignore_na_data$steps, ignore_na_data$interval, mean)
 plot(interval_data, type ="l", main = "Average Number of Steps Taken per 5 Minute Interval in Day", ylab = "Average Number of Steps per Interval", xlab = "Interval")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](PA1_template_files/figure-html/by_interval_line_plot-1.png)<!-- -->
 
 ###Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -140,7 +140,7 @@ date_imputed_data <- tapply(imputed_data$steps, imputed_data$date, sum)
 hist(date_imputed_data, main = "Histogram of Total Steps per Day (imputing NAs)", xlab = "Total Steps per Day")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+![](PA1_template_files/figure-html/histogram_impute_nas-1.png)<!-- -->
 
 ```r
 mean_by_date_impute_na <- mean(date_imputed_data)
@@ -188,6 +188,6 @@ library(lattice)
 xyplot(steps ~ interval | wday, data = b, layout = c(1,2), type = "l", ylab = "Number of Steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+![](PA1_template_files/figure-html/weekend_weekday_comparison-1.png)<!-- -->
 
 Looks like other than early morning (getting ready for work?; walking to/ from the train station?), this person is more active on the weekends.  Though he/she does seem to sleep in a bit on the weekend.

@@ -29,7 +29,7 @@ The data was provided in a csv formatted file.  It contained three columns of da
 
 Note - the NAs are all associated with specific days and for those days, all of the measurements were NA.  So calcualting the total per day means that those days will be ignored.
 
-```{r}
+```{r histogram_ignore_nas}
 # Calculate, provide histogram and calculate mean and median of total number of steps taken each day 
 # note that the NA's are all assoicated with certain days and for those days all intervals are NA
 date_data <- tapply(activity_data$steps, activity_data$date, sum)
@@ -53,7 +53,7 @@ The mean of the total steps taken per day is `r mean_by_date_ignore_na` and the 
 
 Since each interval has some NAs, I have removed the NAs for this part of the analysis (i.e., to ignore them)
 
-```{r}
+```{r by_interval_line_plot}
 # Remove NAs from data set to allow calculation of interval averages and calculate interval averages
 ignore_na_data <- activity_data[!is.na(activity_data$steps),]
 interval_data <- tapply(ignore_na_data$steps, ignore_na_data$interval, mean)
@@ -107,7 +107,7 @@ for (i in 1:length(imputed_data$date)) {
 
 Similar to above but now using the imputed data set
 
-```{r}
+```{r histogram_impute_nas}
 # calculate total per day on the imputed datat set and graph and calculate the mean and median for the reulsts 
 date_imputed_data <- tapply(imputed_data$steps, imputed_data$date, sum)
 hist(date_imputed_data, main = "Histogram of Total Steps per Day (imputing NAs)", xlab = "Total Steps per Day")
@@ -139,7 +139,7 @@ amended_data <- rbind(weekday_data2, weekend_data2)
 
 I decided to use Lattice and used group_by to get the data into a tidy package for plotting.
 
-```{r}
+```{r weekend_weekday_comparison}
 # Use group-_by tidy the data set for the plot function
 
 amended_data <- transform(amended_data, wday = factor(wday))
